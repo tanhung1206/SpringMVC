@@ -1,0 +1,39 @@
+1 thêm dependency trong pom.xml:
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>6.1.10</version>
+    </dependency>
+2 cấu hình DispatcherSerlvet do spring cung cấp
+    trong file web.xml:
+    <servlet-mapping>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/config/springmvc-config.xml</param-value>
+        </init-param>
+    </servlet>
+
+    trong servlet cấu hình init param:
+        param-name: bắt buộc contextConfigLocation
+        param-value: vị trí của file cấu hình spring
+
+3 trong file cấu hình spring:
+    <context:component-scan base-package=""/>: khai báo vị trí scan các annotation:@component,@controller,@service...
+
+    <mvc:annotation-driven/>: để sử dụng @controller,@service
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    class bắt buộc là org.springframework.web.servlet.view.InternalResourceViewResolver
+
+4 khai báo các @controller trong base-package để dùng

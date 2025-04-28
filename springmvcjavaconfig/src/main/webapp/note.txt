@@ -1,0 +1,25 @@
+1 tạo 1 class kế thừa lớp AbstractAnnotationConfigDispatcherServlet
+    implements 3 hàm:
+        @Override
+        protected Class<?>[] getRootConfigClasses() {
+            return null;
+        }
+
+        Lớp cấu hình
+        @Override
+        protected Class<?>[] getServletConfigClasses() {
+            return new Class[]{WebApplicationContextConfig.class};
+        }
+
+        Đường dẫn và DispatcherServlet sẽ xử lý
+        @Override
+        protected String[] getServletMappings() {
+            return new String[]{"/"};
+        }
+
+2 Tạo 1 class implements WebMvcConfigurer
+    khai báo:
+        @Configuration
+        @ComponentScan
+        @EnableWebMvc
+    trả về bean InternalResourceViewResolver

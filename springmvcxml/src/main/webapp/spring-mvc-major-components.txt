@@ -1,0 +1,24 @@
+1 client request
+2 request to dispatcher servlet
+3 dispatcher servlet send request to handler mapping
+4 handler mapping response controller to solve
+5 dispatcher servlet send request to controller
+6 controller response model and view name
+7 dispatcher servlet send view name to view resolver
+8 view resolver response location of actual view
+9 dispatcher servlet send model to view
+10 view response to dispatcher servlet
+11 dispatcher servlet response to client
+
+Bước                                                        Hoạt động
+1 Client request	                                        Người dùng gửi request (VD: GET /products)
+2 Request đến DispatcherServlet	                            DispatcherServlet tiếp nhận request (là Front Controller)
+3 DispatcherServlet gửi request đến HandlerMapping	        HandlerMapping xác định Controller phù hợp
+4 HandlerMapping trả về Controller	                        DispatcherServlet nhận Controller để xử lý request
+5 DispatcherServlet gửi request đến Controller	            Controller nhận request và xử lý logic
+6 Controller trả về ModelAndView	                        Controller trả về dữ liệu (Model) và tên View (View Name)
+7 DispatcherServlet gửi View Name đến ViewResolver	        ViewResolver tìm View tương ứng
+8 ViewResolver trả về đường dẫn của View thực tế	        DispatcherServlet biết cần render View nào
+9 DispatcherServlet gửi Model đến View	                    Model được đẩy vào View để hiển thị dữ liệu
+10 View render HTML và trả về DispatcherServlet	            View xử lý dữ liệu và tạo HTML
+11 DispatcherServlet gửi response về Client	                HTML được gửi về trình duyệt để hiển thị
